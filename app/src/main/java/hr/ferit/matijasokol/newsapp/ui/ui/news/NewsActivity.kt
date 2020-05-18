@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_news.*
 class NewsActivity : AppCompatActivity() {
 
     private val newsRepository by lazy { NewsRepository(ArticleDatabase(this)) }
-    private val viewModelProviderFactory by lazy { NewsViewModelProviderFactory(newsRepository) }
+    private val viewModelProviderFactory by lazy { NewsViewModelProviderFactory(application, newsRepository) }
     val viewModel by lazy { ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

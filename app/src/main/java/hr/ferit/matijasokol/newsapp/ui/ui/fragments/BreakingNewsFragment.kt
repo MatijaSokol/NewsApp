@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,7 +49,7 @@ class BreakingNewsFragment : BaseFragment(R.layout.fragment_breaking_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.d(TAG, "setUpUi: An error occured $message")
+                        Toast.makeText(activity, "${activity?.getString(R.string.error_occured)}: $message", Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading -> {
